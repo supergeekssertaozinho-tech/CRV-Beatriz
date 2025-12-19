@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Jogo</title>
+
+    <style>
+        /* ================= RESET ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f0e6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            background-color: #0a1f44;
+            height: 120px;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 60px;
+        }
+
+        header h1 {
+            color: #e6f0ff;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-align: center;
+            flex: 1;
+        }
+
+        /* ================= MAIN ================= */
+        main {
+            flex: 1;
+            padding: 50px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 300px);
+            gap: 30px;
+        }
+
+        .image-box {
+            width: 300px;
+            height: 300px;
+            background-color: #8b1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+
+        .image-box:hover {
+            transform: scale(1.08);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background-color: #2f3e5c;
+            padding: 30px 15px;
+            text-align: center;
+        }
+
+        footer p {
+            color: #e6f0ff;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        footer p.italic {
+            font-style: italic;
+        }
+
+        footer p.small {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        .social-links {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-links a {
+            color: #e6f0ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        /* ================= MODAL IMAGEM ================= */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 10px;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ================= NEVE (NATAL) ================= */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 2000;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+
+        /* ================= RESPONSIVO ================= */
+        @media (max-width: 1400px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 300px);
+            }
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 20px;
+                gap: 10px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-box {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <img src="logo.png" alt="Logo CRV" class="logo">
+        <h1>Meu Jogo</h1>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <section class="image-grid">
+            <div class="image-box"><img src="personagem.png" alt="Personagem"></div>
+            <div class="image-box"><img src="inimigo.png" alt="Inimigo"></div>
+            <div class="image-box"><img src="fundo.jpg" alt="Fundo"></div>
+            <div class="image-box"><img src="tilemap.png" alt="Tilemap"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Site desenvolvido por Beatriz Garrido</p>
+        <p class="italic">Oficina de Natal IA - Sertãozinho</p>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/crvlagoabr/" target="_blank">Instagram</a>
+            <a href="https://crv4all.com.br/pt" target="_blank">Site CRV</a>
+        </div>
+
+        <p class="small">Todos os direitos reservados</p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+        <span class="close" id="close">&times;</span>
+        <img id="modalImg" alt="Imagem ampliada">
+    </div>
+
+    <!-- ================= JS ================= -->
+    <script>
+        /* MODAL IMAGEM */
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modalImg");
+        const closeBtn = document.getElementById("close");
+
+        document.querySelectorAll(".image-box img").forEach(img => {
+            img.addEventListener("click", () => {
+                modal.style.display = "flex";
+                modalImg.src = img.src;
+            });
+        });
+
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) modal.style.display = "none";
+        });
+
+        /* NEVE DE NATAL */
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.className = "snowflake";
+            snowflake.innerHTML = "❄";
+
+            snowflake.style.left = Math.random() * window.innerWidth + "px";
+            snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+            snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
+            snowflake.style.opacity = Math.random();
+
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000);
+        }
+
+        setInterval(createSnowflake, 300);
+    </script>
+
+</body>
+</html>
